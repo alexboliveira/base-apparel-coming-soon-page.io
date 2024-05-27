@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 /* - Weights: 300, 400, 600 */
@@ -8,112 +7,133 @@
     font-weight: 300;
     font-style: normal;
   }
-  
 
 *{
-    margin:0;
+    margin: 0;
     padding: 0;
     font-weight: unset;
-
 }
 
-main{
-    width: auto;
+:root{
+    --coluna1: 830px;
+    --coluna2: 610px;
+
+
+    --linha1: 100px;
+    --linha2: 700px;
+}
+
+body{
     min-height: 100vh;
-    /* 750w  x 417h   desktop*/
-    /* 375w mobile */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/*aqui estamos determinando quantos box teremos e os nomes deles*/
+header { grid-area: header;}
+main { grid-area: main;}
+aside { grid-area: aside;}
+
+
+#app {
+    
+    display: grid;
+    width: calc(var(--coluna1) + var(--coluna2));
+    /*min-height: 100vh;*/
+    grid-template:
+        'header aside' var(--linha1)  /*linha1*/
+        'main aside' var(--linha2)  /*linha2 */
+        / var(--coluna1)  var(--coluna2);  /* coluna1  - coluna2*/
 
     
-
+    /* height: 417px;   */
+    /* gap: 1px; */
+    /* background-color: #2196F3; */
+        
 }
 
-main > article{
-    width: 350px;
 
 
+
+aside{
+    background-image: url('../images/hero-desktop.jpg');
 }
-main  > header{
-    height: 85px;
+
+header{
     display: flex;
     align-items: center;
-    margin-left: 30px;
-}
-
-main article section:nth-of-type(1){
-    height: 250px;
-    background-image: url('../images/hero-mobile.jpg');
-}
-
-main header img{
-    height: 22px;
-
+    justify-content: flex-start;
+    padding-left: 167px;
+    padding-right: 167px;
+    background-image: url('../images/bg-pattern-desktop.svg');
+    background-size: cover;
 }
 
 
-main article section:nth-of-type(2){
-    
-
+main{
+    background-image: url('../images/bg-pattern-desktop.svg');
+    background-size: cover;
+    padding-left: 167px;
+    padding-right: 167px;
 }
 
-main article section:nth-of-type(2) > h1{
-    margin-top: 66px;
-    font-size: 40px;
-    font-weight: 600;
-    padding-left: 34px;
-    padding-right: 34px;
+main > h1{
+    margin-top: 7rem;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 4.2rem;
+    letter-spacing: 1rem;
     text-transform: uppercase;
-    letter-spacing: 10px;
-    text-align: center;
-
+    
 }
-
-main article section:nth-of-type(2) > h1 span{
+main > h1 span{
     color: hsl(0, 36%, 70%);
     font-weight: 300;
-}
-main article section:nth-of-type(2) > p{
-    margin-top: 20px;
-    font-weight: 300;
-    color: hsl(0, 93%, 68%);
-    line-height: 20px;
-    text-align: center;
-    font-size: 16px;
-    background-color: unset;
-    margin-left: 15px;
-    margin-right: 15px;
+    font-size: 4rem;
 }
 
+main > p{
+    margin-top: 15px;
+    color: hsl(0, 36%, 70%);
+    line-height: 30px;
+    font-weight: 400;
+    font-size: 18px;
+}
 
-
-main article section:nth-of-type(2) div{
-    width: 100%;
+main > div{
     margin-top: 40px;
     display: flex;
     align-items: center;
-    
+
+}
+main > div > form{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
 }
 
-
-main article section:nth-of-type(2) input{
+main > div > form> input{
     width: 100%;
-    padding: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+    padding: 20px;
+    
     border-radius: 30px;
     color: hsl(0, 80%, 86%);
     border:1px;
     border-color: hsl(0, 80%, 86%);
     box-shadow: 0px 0px 1px 1px hsl(0, 80%, 86%);
     outline: none;
-   
-    
 
 }
 
-main article section:nth-of-type(2) button{
+main > div > form > button{
     display: flex;
-    width: 70px;
-    height: 50px;
+    width: 100px;
+    height: 60px;
     color: white;
     background-image: linear-gradient(135deg,hsl(0, 80%, 86%),hsl(0, 74%, 74%));
     border: unset;
@@ -122,47 +142,96 @@ main article section:nth-of-type(2) button{
     font-size: 25px;
     border-radius: 30px;
     position: absolute;
-    margin-left: 300px;
+    margin-left: 430px;
+    cursor: pointer;
 
 }
 
 
-/* desktop */
-@media (min-width: 800px) {
+div#msgemail{
+    position: absolute;
+    display: none;
+}
 
-    body{
-        background-color: unset;
-    }
-    main > article{
-        display: flex;
-        flex-direction:row-reverse;
-        width: 750px;
-        height: 417px; 
-        align-items: center;
-        justify-content: center;
-    }
 
-    main article section:nth-of-type(1){
-        height: 100%;
-        width: 318px;
-        background-image: url('../images/hero-desktop.jpg');
-        background-size:contain;
-        background-color: unset;
+
+/* mobile */
+@media (max-width:1439px) {
+
+
+
+    :root{
+        --coluna1: 375px;
+    
+    
+        --linha1: 85px;
+        --linha2: 250px;
+        --linha3: 466px
     }
 
-    main article section:nth-of-type(2){
-        background-color: unset;
-        height: 100%;
-        width: 432px;
+
+    
+    #app {
+    
+        
+        display: grid;
+        width:var(--coluna1);
+        /*min-height: 100vh;*/
+        grid-template:
+            'header' var(--linha1)  /*linha1*/
+            'aside'  var(--linha2)  /*linha 2*/
+            'main' var(--linha3)  /*linha3 */
+            / var(--coluna1);/* coluna1*/
+
+        
+        /* height: 417px;   */
+        /* gap: 1px; */
+        /* background-color: #2196F3; */
+            
+    }
+
+    header img{
+        height: 22px;
 
     }
-    main article section:nth-of-type(2) > h1{
-        text-align: left;
-
+    aside{
+        background-image: url('../images/hero-mobile.jpg');
+        background-size: 100% 100%;
     }
+
+    main, header{
+        padding-left: 32px;
+        padding-right: 32px;
+        background-image: unset;
+        
+    }
+
    
 
+    main > h1, main > h1 span{
+        margin-top: 3.5rem;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 3rem;
+        text-align: center;
+    }
+    main > h1 span{
+        font-weight: 300;
+    }
+    main > p{
+        margin-top: 10px;
+        line-height: 20px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 300;
+    }
 
+    main > div > form > button{
+        margin-left: 250px;
+        width: 80px;
+    }
+    
+   
     
 }
 
